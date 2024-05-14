@@ -45,6 +45,7 @@
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
         <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all" />
         <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" ExcludeAssets="runtime"/>
         <PackageReference Include="UnityEngine.Modules" Version="2021.2.11" PrivateAssets="all"/>
     </ItemGroup>
 
@@ -56,7 +57,7 @@
     
     <!-- Primary Package References - Game Assemblies -->
     <ItemGroup>
-        <Reference Include="Assembly-CSharp" HintPath="$(GLOOMWOOD_REFERENCES)\Assembly-CSharp.dll" Private="False" />
+        <Reference Include="Assembly-CSharp" HintPath="$(GLOOMWOOD_REFERENCES)\Assembly-CSharp.dll" Private="False" Publicize="true"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
