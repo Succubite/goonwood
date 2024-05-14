@@ -19,7 +19,7 @@ public class Goonwood : BaseUnityPlugin
         Instance = this;
 
         // TODO: make `serverUri` configurable
-        DeviceManager = new DeviceManager("ViralTremors", "ws://127.0.0.1:12345");
+        DeviceManager = new DeviceManager("Goonwood", "ws://127.0.0.1:12345");
         DeviceManager.ConnectDevices();
         
         Hook();
