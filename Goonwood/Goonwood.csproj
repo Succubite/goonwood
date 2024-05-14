@@ -58,6 +58,7 @@
     <!-- Primary Package References - Game Assemblies -->
     <ItemGroup>
         <Reference Include="Assembly-CSharp" HintPath="$(GLOOMWOOD_REFERENCES)\Assembly-CSharp.dll" Private="False" Publicize="true"/>
+        <Reference Include="MMHOOK_Assembly-CSharp" HintPath="$(MMHOOK_REFERENCES)\MMHOOK_Assembly-CSharp.dll" Private="False" Publicize="true"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

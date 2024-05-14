@@ -34,8 +34,7 @@ public class Goonwood : BaseUnityPlugin
     private static void Hook()
     {
         Logger.LogDebug("Hooking...");
-
-
+        
         Logger.LogDebug("Finished Hooking!");
     }
 }

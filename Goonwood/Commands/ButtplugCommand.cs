@@ -3,7 +3,7 @@ using Gloomwood.RuntimeConsole.Commands;
 
 namespace Goonwood.Commands;
 
-public class ButtplugCommand
+public static class ButtplugCommand
 {
     public static ConsoleCommand GetCommand()
     {
