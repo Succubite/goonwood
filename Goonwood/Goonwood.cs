@@ -2,6 +2,7 @@ using BepInEx;
 using BepInEx.Logging;
 // using Goonwood.Hooks;
 using Goonwood.Buttplug;
+using Goonwood.Commands;
 
 namespace Goonwood;
 
@@ -22,6 +23,10 @@ public class Goonwood : BaseUnityPlugin
         DeviceManager.ConnectDevices();
         
         Hook();
+        
+#if DEBUG
+        CommandLoader.LoadCommands();
+#endif
 
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} (v{MyPluginInfo.PLUGIN_VERSION}) has loaded!");
     }

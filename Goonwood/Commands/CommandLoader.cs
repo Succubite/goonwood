@@ -5,11 +5,19 @@ namespace Goonwood.Commands;
 
 public class CommandLoader
 {
-    public static List<ConsoleCommand> LoadCommands()
+    private static List<ConsoleCommand> GetCommands()
     {
         return new List<ConsoleCommand>()
         {
             ButtplugCommand.GetCommand(),
         };
+    }
+    
+    public static void LoadCommands()
+    {
+        foreach (var command in GetCommands())
+        {
+            ConsoleController.Instance.RegisterCommand(command);
+        }
     }
 }

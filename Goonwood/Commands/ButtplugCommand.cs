@@ -16,7 +16,6 @@ public class ButtplugCommand
 
         return command switch
         {
-            "reconnect" => Reconnect(),
             "disconnect" => Disconnect(),
             "status" => $"Connected: {Goonwood.DeviceManager.IsConnected()}",
             _ => HelpCommand.Execute(new[] { Usage }),
@@ -29,17 +28,10 @@ public class ButtplugCommand
         
         return "Disconnected";
     }
-    
-    private static string Reconnect()
-    {
-        Goonwood.DeviceManager.Reconnect();
-
-        return "Reconnecting... hopefully...";
-    }
 
     public static string Name = "bp";
 
     public static string Description = "Goonwood Buttplug commands";
 
-    public static string Usage = "bp [reconnect] | [disconnect] | [status]";
+    public static string Usage = "bp  [disconnect] | [status]";
 }
