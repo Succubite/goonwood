@@ -45,6 +45,18 @@ public class DeviceManager
         }
     }
     
+    public async void Reconnect()
+    {
+        await ButtplugClient.DisconnectAsync();
+        ConnectDevices();
+    }
+
+    public async void Disconnect()
+    {
+        StopConnectedDevices();
+        await ButtplugClient.DisconnectAsync();
+    }
+    
     public void VibrateConnectedDevicesWithDuration(float intensity, float time)
     {
         ConnectedDevices.ForEach(Action);

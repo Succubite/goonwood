@@ -9,7 +9,7 @@ public class CommandLoader
     {
         return new List<ConsoleCommand>()
         {
-            ReconnectCommand.GetCommand(),
+            ButtplugCommand.GetCommand(),
         };
     }
 }
