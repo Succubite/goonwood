@@ -1,2 +1,2 @@
-# goonwood
+# Goonwood
 Gloomwood buttplug.io integration
