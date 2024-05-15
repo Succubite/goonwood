@@ -25,6 +25,9 @@ public static class AISenseHooks
         
         switch (detection.level)
         {
+            case AIDetectLevel.None:
+                Goonwood.Logger.LogInfo("Stopping vibration");
+                break;
             case AIDetectLevel.Low:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `Low`");
                 break;
