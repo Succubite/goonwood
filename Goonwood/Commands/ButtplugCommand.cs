@@ -18,7 +18,7 @@ public static class ButtplugCommand
         {
             "disconnect" => Disconnect(),
             "status" => $"Connected: {Goonwood.DeviceManager.IsConnected()}",
-            _ => HelpCommand.Execute(new[] { Usage }),
+            _ => HelpCommand.Execute(Usage),
         };
     }
 
