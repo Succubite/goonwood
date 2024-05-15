@@ -24,9 +24,9 @@ public class Goonwood : BaseUnityPlugin
         
         Hook();
         
-#if DEBUG
-        CommandLoader.LoadCommands();
-#endif
+// #if DEBUG
+//         CommandLoader.LoadCommands();
+// #endif
 
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} (v{MyPluginInfo.PLUGIN_VERSION}) has loaded!");
     }
