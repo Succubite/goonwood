@@ -28,7 +28,7 @@ public static class ButtplugCommand
     private static string ShowDevices()
     {
         var devices = "";
-        
+
         foreach (var device in Goonwood.DeviceManager.ConnectedDevices)
         {
             devices += $"Connected device: {device.Name}\n";
@@ -40,7 +40,7 @@ public static class ButtplugCommand
     private static string Disconnect()
     {
         Goonwood.DeviceManager.Disconnect();
-        
+
         return "Disconnected";
     }
 

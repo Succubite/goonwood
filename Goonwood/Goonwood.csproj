@@ -42,9 +42,9 @@
 
     <!-- Primary Package References - BepInEx -->
     <ItemGroup>
-        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-        <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all" />
-        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all"/>
         <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" ExcludeAssets="runtime"/>
         <PackageReference Include="UnityEngine.Modules" Version="2021.2.11" PrivateAssets="all"/>
     </ItemGroup>
@@ -63,10 +63,10 @@
 
     <!-- Primary Package References - Buttplug.io -->
     <ItemGroup>
-        <PackageReference Include="Buttplug" Version="3.0.1" />
-        <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1" />
+        <PackageReference Include="Buttplug" Version="3.0.1"/>
+        <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1"/>
     </ItemGroup>
-    
+
     <!-- Primary Package References - Game Assemblies -->
     <ItemGroup>
         <Reference Include="Assembly-CSharp" HintPath="$(GLOOMWOOD_REFERENCES)\Assembly-CSharp.dll" Private="False" Publicize="true"/>
@@ -74,6 +74,6 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
-        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
     </ItemGroup>
 </Project>

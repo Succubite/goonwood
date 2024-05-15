@@ -4,7 +4,7 @@ using ConsoleController = On.Gloomwood.RuntimeConsole.ConsoleController;
 
 namespace Goonwood.Commands;
 
-public class CommandLoader
+public static class CommandLoader
 {
     private static List<ConsoleCommand> GetCommands()
     {
@@ -13,13 +13,14 @@ public class CommandLoader
             ButtplugCommand.GetCommand(),
         };
     }
-    
+
     public static void Initialize()
     {
         ConsoleController.Start += ConsoleControllerOnStart;
     }
 
-    private static void ConsoleControllerOnStart(ConsoleController.orig_Start orig, Gloomwood.RuntimeConsole.ConsoleController self)
+    private static void ConsoleControllerOnStart(ConsoleController.orig_Start orig,
+        Gloomwood.RuntimeConsole.ConsoleController self)
     {
         foreach (var command in GetCommands())
         {

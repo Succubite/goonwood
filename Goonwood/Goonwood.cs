@@ -22,9 +22,9 @@ public class Goonwood : BaseUnityPlugin
         // TODO: make `serverUri` configurable
         DeviceManager = new DeviceManager("Goonwood", "ws://127.0.0.1:12345");
         DeviceManager.ConnectDevices();
-        
+
         Hook();
-        
+
 #if DEBUG
         CommandLoader.Initialize();
 #endif
@@ -35,9 +35,10 @@ public class Goonwood : BaseUnityPlugin
     private static void Hook()
     {
         Logger.LogDebug("Hooking...");
-        
+
         PlayerHealthHooks.Initialize();
-        
+        AISenseHooks.Initialize();
+
         Logger.LogDebug("Finished Hooking!");
     }
 }
