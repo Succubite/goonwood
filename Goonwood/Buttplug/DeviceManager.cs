@@ -13,14 +13,14 @@ public class DeviceManager
     public List<ButtplugClientDevice> ConnectedDevices { get; set; }
     private ButtplugClient ButtplugClient { get; set; }
     private string ServerUri { get; set; }
-    
-    
+
+
     public DeviceManager(string clientName, string serverUri)
     {
         ConnectedDevices = new List<ButtplugClientDevice>();
         ButtplugClient = new ButtplugClient(clientName);
         ServerUri = serverUri;
-        
+
         Goonwood.Logger.LogInfo("BP client created for " + clientName);
         ButtplugClient.DeviceAdded += HandleDeviceAdded;
         ButtplugClient.DeviceRemoved += HandleDeviceRemoved;
@@ -44,19 +44,24 @@ public class DeviceManager
             Goonwood.Logger.LogDebug($"ButtplugIO error occured while connecting devices: {exception}");
         }
     }
-    
-    public async void Reconnect()
-    {
-        await ButtplugClient.DisconnectAsync();
-        ConnectDevices();
-    }
 
     public async void Disconnect()
     {
         StopConnectedDevices();
         await ButtplugClient.DisconnectAsync();
     }
-    
+
+    public void VibrateConnectedDevices(double intensity)
+    {
+        ConnectedDevices.ForEach(Action);
+        return;
+
+        async void Action(ButtplugClientDevice device)
+        {
+            await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
+        }
+    }
+
     public void VibrateConnectedDevicesWithDuration(float intensity, float time)
     {
         ConnectedDevices.ForEach(Action);
@@ -69,14 +74,14 @@ public class DeviceManager
             await device.VibrateAsync(0.0f);
         }
     }
-    
+
     public void StopConnectedDevices()
     {
         ConnectedDevices.ForEach(device => device.Stop());
     }
-    
+
     public bool IsConnected() => ButtplugClient.Connected;
-    
+
     private void HandleDeviceAdded(object sender, DeviceAddedEventArgs args)
     {
         if (!IsVibratableDevice(args.Device))

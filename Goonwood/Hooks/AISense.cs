@@ -23,19 +23,25 @@ public static class AISenseHooks
         var playerEntity = target.GetComponent<PlayerEntity>();
         if (playerEntity is null) return;
         
+        // TODO: Make the vibration configurable
+        // Maybe check for whether the game is paused?
         switch (detection.level)
         {
             case AIDetectLevel.None:
                 Goonwood.Logger.LogInfo("Stopping vibration");
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.0);
                 break;
             case AIDetectLevel.Low:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `Low`");
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.3);
                 break;
             case AIDetectLevel.Moderate:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `Moderate`");
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.5);
                 break;
             case AIDetectLevel.High:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `High`");
+                Goonwood.DeviceManager.VibrateConnectedDevices(1.0);
                 break;
         }
     }
