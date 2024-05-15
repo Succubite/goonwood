@@ -12,7 +12,8 @@ public static class ButtplugCommand
 
     public static string Execute(params string[] args)
     {
-        // This can and will error if the command inputted is just `bp` with no spaces after it.
+        if (args.Length == 0) return HelpCommand.Execute(Usage);
+
         var command = args[0];
 
         return command switch
