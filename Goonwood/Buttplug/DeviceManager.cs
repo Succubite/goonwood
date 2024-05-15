@@ -10,7 +10,7 @@ namespace Goonwood.Buttplug;
 
 public class DeviceManager
 {
-    private List<ButtplugClientDevice> ConnectedDevices { get; set; }
+    public List<ButtplugClientDevice> ConnectedDevices { get; set; }
     private ButtplugClient ButtplugClient { get; set; }
     private string ServerUri { get; set; }
     

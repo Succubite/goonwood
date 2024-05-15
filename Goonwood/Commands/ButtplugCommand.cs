@@ -19,9 +19,22 @@ public static class ButtplugCommand
         return command switch
         {
             "disconnect" => Disconnect(),
+            "devices" => ShowDevices(),
             "status" => $"Connected: {Goonwood.DeviceManager.IsConnected()}",
             _ => HelpCommand.Execute(Usage),
         };
+    }
+
+    private static string ShowDevices()
+    {
+        var devices = "";
+        
+        foreach (var device in Goonwood.DeviceManager.ConnectedDevices)
+        {
+            devices += $"Connected device: {device.Name}\n";
+        }
+
+        return devices;
     }
 
     private static string Disconnect()
@@ -35,5 +48,5 @@ public static class ButtplugCommand
 
     public static string Description = "Goonwood Buttplug commands";
 
-    public static string Usage = "bp  [disconnect] | [status]";
+    public static string Usage = "bp [disconnect] | [status | [devices]";
 }
