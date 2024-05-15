@@ -3,6 +3,7 @@ using BepInEx.Logging;
 // using Goonwood.Hooks;
 using Goonwood.Buttplug;
 using Goonwood.Commands;
+using Goonwood.Hooks;
 
 namespace Goonwood;
 
@@ -24,9 +25,9 @@ public class Goonwood : BaseUnityPlugin
         
         Hook();
         
-// #if DEBUG
-//         CommandLoader.LoadCommands();
-// #endif
+#if DEBUG
+        CommandLoader.Initialize();
+#endif
 
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} (v{MyPluginInfo.PLUGIN_VERSION}) has loaded!");
     }
@@ -34,6 +35,8 @@ public class Goonwood : BaseUnityPlugin
     private static void Hook()
     {
         Logger.LogDebug("Hooking...");
+        
+        PlayerEntityHooks.Initialize();
         
         Logger.LogDebug("Finished Hooking!");
     }
