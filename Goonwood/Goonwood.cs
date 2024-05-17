@@ -37,8 +37,8 @@ public class Goonwood : BaseUnityPlugin
         Logger.LogDebug("Hooking...");
 
         PlayerHealthHooks.Initialize();
-        AISenseHooks.Initialize();
-
+        AIThinkHooks.Initialize();
+        
         Logger.LogDebug("Finished Hooking!");
     }
 }
