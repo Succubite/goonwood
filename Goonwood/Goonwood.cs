@@ -38,6 +38,8 @@ public class Goonwood : BaseUnityPlugin
 
         PlayerHealthHooks.Initialize();
         AIThinkHooks.Initialize();
+        WeaponEntityHooks.Initialize();
+        AIHealthHooks.Initialize();
         
         Logger.LogDebug("Finished Hooking!");
     }
