@@ -26,15 +26,15 @@ public static class AIThinkHooks
                 break;
             case AIAlertLevel.Low:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `Low`");
-                Goonwood.DeviceManager.VibrateConnectedDevices(0.3);
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.1);
                 break;
             case AIAlertLevel.Moderate:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `Moderate`");
-                Goonwood.DeviceManager.VibrateConnectedDevices(0.5);
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.3);
                 break;
             case AIAlertLevel.High:
                 Goonwood.Logger.LogInfo("Player was detected with a level of `High`");
-                Goonwood.DeviceManager.VibrateConnectedDevices(1.0);
+                Goonwood.DeviceManager.VibrateConnectedDevices(0.4);
                 break;
         }
     }
