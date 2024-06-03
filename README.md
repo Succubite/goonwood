@@ -16,3 +16,8 @@ Some features remain unimplemented.
 - In-game config editing
   - Might want to make a separate library for others to use too.
 - An actual config file.
+
+Although, some features are implemented. Which at the time of writing (June 3rd, 2024) is vibrating while you're detected by enemies.
+
+## Building
+remind me...
