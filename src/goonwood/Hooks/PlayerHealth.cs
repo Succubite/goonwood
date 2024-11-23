@@ -27,6 +27,9 @@ public static class PlayerHealthHooks
     {
         orig(self, damageEventInfo);
         Goonwood.Logger.LogDebug("Player died!");
+        
+        // TODO: Make time and intensity configurable
+        Goonwood.DeviceManager.VibrateConnectedDevicesWithDuration(1.0f, 0.3f);
     }
 
     private static void PlayerHealthOnOnPlayerDamage(PlayerHealth.orig_OnPlayerDamage orig,
@@ -34,5 +37,8 @@ public static class PlayerHealthHooks
     {
         orig(self, damageEventInfo);
         Goonwood.Logger.LogDebug("Player damaged!");
+        
+        // TODO: Make time and intensity configurable
+        Goonwood.DeviceManager.VibrateConnectedDevicesWithDuration(0.1f, 0.1f);
     }
 }
