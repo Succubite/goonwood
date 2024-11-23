@@ -10,16 +10,6 @@ public static class PlayerHealthHooks
     {
         PlayerHealth.OnPlayerDamage += PlayerHealthOnOnPlayerDamage;
         PlayerHealth.OnPlayerKilled += PlayerHealthOnOnPlayerKilled;
-        EntityHealth.SetAmount += EntityHealthOnSetAmount;
-    }
-
-    private static void EntityHealthOnSetAmount(EntityHealth.orig_SetAmount orig, Gloomwood.Entity.EntityHealth self,
-        int value)
-    {
-        orig(self, value);
-
-        if (self is not Gloomwood.Players.PlayerHealth) return;
-        Goonwood.Logger.LogInfo($"Player health set to {value}");
     }
 
     private static void PlayerHealthOnOnPlayerKilled(PlayerHealth.orig_OnPlayerKilled orig,
