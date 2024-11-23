@@ -25,14 +25,14 @@ public static class PlayerHealthHooks
     private static void PlayerHealthOnOnPlayerKilled(PlayerHealth.orig_OnPlayerKilled orig,
         Gloomwood.Players.PlayerHealth self, DamageEventInfo damageEventInfo)
     {
-        Goonwood.Logger.LogInfo("Player died!");
         orig(self, damageEventInfo);
+        Goonwood.Logger.LogDebug("Player died!");
     }
 
     private static void PlayerHealthOnOnPlayerDamage(PlayerHealth.orig_OnPlayerDamage orig,
         Gloomwood.Players.PlayerHealth self, DamageEventInfo damageEventInfo)
     {
-        Goonwood.Logger.LogInfo("Player damaged!");
         orig(self, damageEventInfo);
+        Goonwood.Logger.LogDebug("Player damaged!");
     }
 }

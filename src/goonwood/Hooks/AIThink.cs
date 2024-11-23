@@ -21,19 +21,19 @@ public static class AIThinkHooks
         switch (alertLevel)
         {
             case AIAlertLevel.None:
-                Goonwood.Logger.LogInfo("Stopping vibration");
+                Goonwood.Logger.LogDebug("Stopping vibration");
                 Goonwood.DeviceManager.StopConnectedDevices();
                 break;
             case AIAlertLevel.Low:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `Low`");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `Low`");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.1);
                 break;
             case AIAlertLevel.Moderate:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `Moderate`");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `Moderate`");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.3);
                 break;
             case AIAlertLevel.High:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `High`");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `High`");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.4);
                 break;
         }

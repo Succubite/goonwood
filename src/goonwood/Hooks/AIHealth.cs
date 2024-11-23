@@ -19,12 +19,12 @@ public static class AIHealthHooks
     {
         orig(self, damageEventInfo);
 
-        Goonwood.Logger.LogInfo(
+        Goonwood.Logger.LogDebug(
             $"{self.self.name} was killed with {damageEventInfo.amount} damage by {damageEventInfo.source}");
-        
+
         var aiSense = self.self.Sense;
         var aiThink = self.self.Think;
-        
+
         // Hopefully this should stop any detection.
         aiSense.ClearDetection();
         aiThink.OnAlertLevel(AIAlertLevel.None);

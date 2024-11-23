@@ -23,19 +23,19 @@ public static class AISentryTaskHooks
         switch (detectionInfo.level)
         {
             case AIDetectLevel.None:
-                Goonwood.Logger.LogInfo("Stopping vibration");
+                Goonwood.Logger.LogDebug("Stopping vibration");
                 Goonwood.DeviceManager.StopConnectedDevices();
                 break;
             case AIDetectLevel.Low:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `Low` by sentry");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `Low` by sentry");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.1);
                 break;
             case AIDetectLevel.Moderate:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `Moderate` by sentry");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `Moderate` by sentry");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.3);
                 break;
             case AIDetectLevel.High:
-                Goonwood.Logger.LogInfo("Player was detected with a level of `High` by sentry");
+                Goonwood.Logger.LogDebug("Player was detected with a level of `High` by sentry");
                 Goonwood.DeviceManager.VibrateConnectedDevices(0.4);
                 break;
             default:
@@ -49,6 +49,7 @@ public static class AISentryTaskHooks
     {
         orig(self);
         
+        Goonwood.Logger.LogDebug("Sentry task exited, stopping connected devices");
         Goonwood.DeviceManager.StopConnectedDevices();
     }
 }
