@@ -5,21 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86d31a11-cccb-430f-ba1a-a6a33a50f6ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cliff.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/goonwood/packages.lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory.Build.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Directory.Build.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/goonwood/Patches/Use-This-Dir.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/goonwood/Plugin.cs" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/goonwood/FodyWeavers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Goonwood/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Goonwood/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/goonwood/goonwood.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/goonwood/goonwood.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,6 +94,7 @@
       <updated>1732371986216</updated>
       <workItem from="1732371989176" duration="178000" />
       <workItem from="1732372217974" duration="207000" />
+      <workItem from="1732372524327" duration="162000" />
     </task>
     <servers />
   </component>

@@ -34,6 +34,18 @@
         <PackageReference Include="UnityEngine.Modules" Version="2021.2.11" PrivateAssets="all"/>
     </ItemGroup>
 
+    <!-- Primary Package References - Costura -->
+    <ItemGroup>
+        <PackageReference Include="Costura.Fody" Version="5.8.0-alpha0098">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive; compile</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Fody" Version="6.8.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive; compile</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
     <!-- Primary Package References - Buttplug.io -->
     <ItemGroup>
         <PackageReference Include="Buttplug" Version="4.0.0"/>
