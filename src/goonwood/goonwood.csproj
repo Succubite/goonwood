@@ -1,65 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
 
-    <!-- 
-      These were automatically generated for you by the template.
-      You should probably not edit them by hand if you've already published
-      to the Thunderstore.
-    -->
-    <AssemblyName>com.github.Succubite.goonwood</AssemblyName>
-    <Authors>bananasov</Authors>
-    <Description>Gloomwood buttplug.io integration</Description>
-    <Product>goonwood</Product>
-    <!--
-      Except this, you should keep this up to date with your publishing tags.
-    -->
-    <Version>1.0.0</Version>
+        <!-- 
+          These were automatically generated for you by the template.
+          You should probably not edit them by hand if you've already published
+          to the Thunderstore.
+        -->
+        <AssemblyName>com.github.Succubite.goonwood</AssemblyName>
+        <Authors>bananasov</Authors>
+        <Description>Gloomwood buttplug.io integration</Description>
+        <Product>Goonwood</Product>
+        <!--
+          Except this, you should keep this up to date with your publishing tags.
+        -->
+        <Version>0.1.0</Version>
 
-    <!-- 
-      You shouldn't have to change these, but you could if you wanted to.
-    -->
-    <ProjectDepsFileName>$(Product).deps.json</ProjectDepsFileName>
-    <RootNamespace>$(Product)</RootNamespace>
-    <TargetName>$(Product)</TargetName>
-  </PropertyGroup>
+        <!-- 
+          You shouldn't have to change these, but you could if you wanted to.
+        -->
+        <ProjectDepsFileName>$(Product).deps.json</ProjectDepsFileName>
+        <RootNamespace>$(Product)</RootNamespace>
+        <TargetName>$(Product)</TargetName>
+    </PropertyGroup>
 
-  <!--
-    Don't mess with anything below this line, it is required to build via 
-    github actions. If you are referencing other DLLs in your project than the
-    base game or unity DLLs they will need to be available via NUGET or copied
-    directly into your repo (which is pretty bad form) to build properly unless
-    they already exist on github in which case you can use submodules to track
-    the reference instead.
-  -->
+    <!-- Primary Package References - BepInEx -->
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" ExcludeAssets="runtime"/>
+        <PackageReference Include="UnityEngine.Modules" Version="2021.2.11" PrivateAssets="all"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference
-      Include="BepInEx.Analyzers"
-      PrivateAssets="all"
-      Version="1.*"
-    />
-    <PackageReference
-      Include="BepInEx.Core"
-      Version="5.4.*"
-    />
-    <PackageReference
-      Include="LethalCompany.GameLibs.Steam"
-      Version="62.0.0-ngd.0"
-    />
+    <!-- Primary Package References - Buttplug.io -->
+    <ItemGroup>
+        <PackageReference Include="Buttplug" Version="4.0.0"/>
+    </ItemGroup>
 
-    <!--
-      When adding additional references, ensure you use <Private>false</Private> to
-      ensure the DLL is explicitly NOT copied to the output directory. This is because
-      the DLLs are already included in the game and will be loaded from there.
-
-      Further, if the DLL is not included as part of the game, you should be using a
-      Dependency in your thunderstore.toml file to ensure the DLL is available to the
-      game when your mod is loaded.
-
-      Example: <Reference Include="Assembly-CSharp.dll" Private="false" />
-    -->
-  </ItemGroup>
-
+    <!-- Primary Package References - Game Assemblies -->
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp" HintPath="$(GLOOMWOOD_REFERENCES)\Assembly-CSharp.dll" Private="False" Publicize="true"/>
+        <Reference Include="MMHOOK_Assembly-CSharp" HintPath="$(MMHOOK_REFERENCES)\MMHOOK_Assembly-CSharp.dll" Private="False" Publicize="true"/>
+    </ItemGroup>
 </Project>

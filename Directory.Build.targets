@@ -9,21 +9,21 @@
   </ItemGroup>
 
   <Target Name="AddGeneratedFile" BeforeTargets="BeforeCompile;CoreCompile"
-      Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)LCMPluginInfo.cs">
+      Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)PluginInfo.cs">
 
     <PropertyGroup>
-      <LCMPluginGuid Condition="'$(LCMPluginGuid)' == ''">$(AssemblyName)</LCMPluginGuid>
-      <LCMPluginName Condition="'$(LCMPluginName)' == ''">$(Product)</LCMPluginName>
-      <LCMPluginVersion Condition="'$(LCMPluginVersion)' == ''">$(Version)</LCMPluginVersion>
+      <PluginGuid Condition="'$(PluginGuid)' == ''">$(AssemblyName)</PluginGuid>
+      <PluginName Condition="'$(PluginName)' == ''">$(Product)</PluginName>
+      <PluginVersion Condition="'$(PluginVersion)' == ''">$(Version)</PluginVersion>
       <GeneratedText><![CDATA[
-internal static class LCMPluginInfo
+internal static class MyPluginInfo
 {
-  public const string PLUGIN_GUID = "$(LCMPluginGuid)"%3B
-  public const string PLUGIN_NAME = "$(LCMPluginName)"%3B
-  public const string PLUGIN_VERSION = "$(LCMPluginVersion)"%3B
+  public const string PLUGIN_GUID = "$(PluginGuid)"%3B
+  public const string PLUGIN_NAME = "$(PluginName)"%3B
+  public const string PLUGIN_VERSION = "$(PluginVersion)"%3B
 }
 ]]></GeneratedText>
-      <GeneratedFilePath>$(IntermediateOutputPath)LCMPluginInfo.cs</GeneratedFilePath>
+      <GeneratedFilePath>$(IntermediateOutputPath)PluginInfo.cs</GeneratedFilePath>
     </PropertyGroup>
 
     <ItemGroup>

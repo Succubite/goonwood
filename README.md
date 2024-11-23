@@ -1,9 +1,21 @@
-# goonwood
-
+# Goonwood
 Gloomwood buttplug.io integration
 
-## How to use this Template
+## Notice
+This mod is not yet finished, we have a few requirements before we can release our first build.
 
-For a complete guide on using this template to create a simple `Hello World` project see [Your First Mod](https://lethalcompanymodding.github.io/Thunderstore/www/Guides/Your-First-Mod.html)
+- Extensive play testing has to be done in the development stages
 
-Template Users: Make sure to remove this section after you create your project!
+Some features remain unimplemented.
+
+- Vibration upon healing
+- Vibration upon firing guns
+- Vibration upon receiving damage and death
+- In-game config editing
+  - Might want to make a separate library for others to use too.
+- An actual config file.
+
+Although, some features are implemented. Which at the time of writing (June 3rd, 2024) is vibrating while you're detected by enemies.
+
+## Building
+remind me...
