@@ -8,7 +8,9 @@ public static class AIHealthHooks
 {
     public static void Initialize()
     {
+#if DEBUG
         AIHealth.OnAttacked += AIHealthOnOnAttacked;
+#endif
         AIHealth.Kill += AIHealthOnKill;
     }
 
@@ -28,6 +30,7 @@ public static class AIHealthHooks
         aiThink.OnAlertLevel(AIAlertLevel.None);
     }
 
+#if DEBUG
     private static bool AIHealthOnOnAttacked(AIHealth.orig_OnAttacked orig, Gloomwood.Entity.AI.AIHealth self,
         AttackHitInfo hit)
     {
@@ -37,4 +40,5 @@ public static class AIHealthHooks
 
         return result;
     }
+#endif
 }
