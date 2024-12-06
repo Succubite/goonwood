@@ -45,6 +45,15 @@ public class DeviceManager
         }
     }
 
+    public async void Reconnect(string serverUri)
+    {
+        Goonwood.Logger.LogInfo("Disconnecting from WebSocket connector");
+        await ButtplugClient.DisconnectAsync();
+        Goonwood.Logger.LogInfo("Connecting to new Buttplug WebSocket");
+        await ButtplugClient.ConnectAsync(new ButtplugWebsocketConnector(new Uri(serverUri)));
+        Goonwood.Logger.LogInfo("Connection successful.");
+    }
+
     public async void Disconnect()
     {
         StopConnectedDevices();

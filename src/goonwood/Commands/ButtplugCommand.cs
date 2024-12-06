@@ -1,28 +1,34 @@
-﻿using Gloomwood.RuntimeConsole;
-using Gloomwood.RuntimeConsole.Commands;
+﻿using Gloomwood.RuntimeConsole.Commands;
+using GloomwoodTesting.Commands;
 
 namespace Goonwood.Commands;
 
-public static class ButtplugCommand
+public class ButtplugCommand : ICommand
 {
-    public static ConsoleCommand GetCommand()
+    public string Name => "buttplug";
+    public string Description => "Goonwood buttplug commands, for development purposes";
+    public string Usage => "buttplug [devices | disconnect | connect]";
+
+    public string Execute(params string[] args)
     {
-        return new ConsoleCommand(Name, Description, Usage, Execute);
-    }
+        if (args.Length == 0) return HelpCommand.Execute(Name);
 
-    public static string Execute(params string[] args)
-    {
-        if (args.Length == 0) return HelpCommand.Execute(Usage);
+        var argument = args[0];
 
-        var command = args[0];
-
-        return command switch
+        return argument switch
         {
+            "connect" => Connect(args[1]),
             "disconnect" => Disconnect(),
             "devices" => ShowDevices(),
-            "status" => $"Connected: {Goonwood.DeviceManager.IsConnected()}",
-            _ => HelpCommand.Execute(Usage),
+            _ => HelpCommand.Execute(Usage)
         };
+    }
+
+    private static string Connect(string url)
+    {
+        Goonwood.DeviceManager.Reconnect(url);
+        
+        return $"Attempting to connect to: {url}";
     }
 
     private static string ShowDevices()
@@ -43,10 +49,4 @@ public static class ButtplugCommand
 
         return "Disconnected";
     }
-
-    public static string Name = "bp";
-
-    public static string Description = "Goonwood Buttplug commands";
-
-    public static string Usage = "bp [disconnect] | [status | [devices]";
 }

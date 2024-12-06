@@ -1,5 +1,6 @@
 using BepInEx;
 using BepInEx.Logging;
+using GloomwoodTesting.Commands;
 using Goonwood.Buttplug;
 using Goonwood.Commands;
 using Goonwood.Hooks;
@@ -25,7 +26,9 @@ public class Goonwood : BaseUnityPlugin
         Hook();
 
 #if DEBUG
-        CommandLoader.Initialize();
+        CommandInitializer.AddCommand(new ButtplugCommand());
+        
+        CommandInitializer.InitializeCommands();
 #endif
 
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} (v{MyPluginInfo.PLUGIN_VERSION}) has loaded!");
