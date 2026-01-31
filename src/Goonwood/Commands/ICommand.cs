@@ -11,12 +11,12 @@ public interface ICommand
     /// The name of the console command, (e.g., "give").
     /// </summary>
     public string Name { get; }
-    
+
     /// <summary>
     /// The description of the console command (e.g., "Gives the player an item").
     /// </summary>
     public string Description { get; }
-    
+
     /// <summary>
     /// A short explanation on how to use the console command (e.g., "give [item_name]").
     /// </summary>

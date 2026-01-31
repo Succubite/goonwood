@@ -14,7 +14,8 @@ internal static class WeaponEntityHooks
             .Postfix(Postfix_PayAmmoCost);
     }
 
-    private static void Postfix_PayAmmoCost(WeaponEntity self, ref int ammoCost, ref WeaponAmmoUpdateFlags ammoUpdateFlags)
+    private static void Postfix_PayAmmoCost(WeaponEntity self, ref int ammoCost,
+        ref WeaponAmmoUpdateFlags ammoUpdateFlags)
     {
         if (ammoCost <= 0) return;
         Goonwood.Log.LogInfo($"Weapon fired with {ammoCost} bullets");

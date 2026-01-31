@@ -26,7 +26,7 @@ public class ButtplugCommand : ICommand
     private static string Connect(string url)
     {
         Goonwood.DeviceManager.Reconnect(url);
-        
+
         return $"Attempting to connect to: {url}";
     }
 
