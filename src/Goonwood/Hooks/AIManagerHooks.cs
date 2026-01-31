@@ -13,7 +13,7 @@ internal static class AIManagerHooks
 {
     private static bool NeedsReset { get; set; } = true;
     private static AIAlertLevel LastAlertLevel { get; set; } = AIAlertLevel.None;
-    
+
     [MonoDetourHookInitialize]
     public static void Initialize()
     {
@@ -25,7 +25,9 @@ internal static class AIManagerHooks
         var activeAI = self.GetActiveAI();
         if (activeAI == null || activeAI.Count == 0) return;
 
-        var sensingEntities = activeAI.Where(entity => entity.HasComponent(AIComponentFlags.Sense));
+        var sensingEntities = activeAI.Where(entity =>
+            entity.HasComponent(AIComponentFlags.Sense) &&
+            (!entity.HasComponent(AIComponentFlags.Health) || entity.Health.IsAlive));
 
         // Find the highest alert level among all entities
         var highestAlertLevel = AIAlertLevel.None;
@@ -37,17 +39,16 @@ internal static class AIManagerHooks
                 highestAlertLevel = currentLevel;
             }
         }
-        
-        
+
         // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
         switch (highestAlertLevel)
         {
             case AIAlertLevel.None when NeedsReset:
-                Goonwood.Log.LogDebug("All entities calm - stopping connected devices");
+                Goonwood.Log.LogDebug("All entities calm, stopping connected devices");
                 Goonwood.DeviceManager.StopConnectedDevices();
                 NeedsReset = false;
                 break;
-                
+
             case AIAlertLevel.Low:
             case AIAlertLevel.Moderate:
             case AIAlertLevel.High:
@@ -57,14 +58,15 @@ internal static class AIManagerHooks
                     var intensity = GetIntensityForAlertLevel(highestAlertLevel);
                     Goonwood.Log.LogDebug($"Alert level: {highestAlertLevel}, vibrating at intensity: {intensity}");
                     Goonwood.DeviceManager.VibrateConnectedDevices(intensity);
-                    NeedsReset = true; 
+                    NeedsReset = true;
                 }
+
                 break;
         }
-        
+
         LastAlertLevel = highestAlertLevel;
     }
-    
+
     private static double GetIntensityForAlertLevel(AIAlertLevel level)
     {
         return level switch
