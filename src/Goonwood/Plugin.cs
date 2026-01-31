@@ -18,29 +18,27 @@ public partial class Goonwood : BaseUnityPlugin
     {
         Log = Logger;
         Settings = new GoonwoodSettings(Config);
-        
+
         DeviceManager = new DeviceManager("Goonwood", "ws://127.0.0.1:12345");
         DeviceManager.ConnectDevices();
-        
-#if DEBUG
+
         CommandInitializer.AddCommand(new ButtplugCommand());
-        
+        CommandInitializer.AddCommand(new AlertLevelCommand());
+
         CommandInitializer.Initialize();
-#endif
-        
+
         Hook();
 
         Log.LogInfo($"Plugin {Name} (v{Version}) has loaded!");
     }
-    
+
     private static void Hook()
     {
         Log.LogDebug("Hooking...");
-        
-        AIThinkHooks.Initialize();
+
         WeaponEntityHooks.Initialize();
         AIManagerHooks.Initialize();
-        
+
         Log.LogDebug("Finished Hooking!");
     }
 }
