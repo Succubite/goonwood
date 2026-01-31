@@ -19,7 +19,7 @@ public partial class Goonwood : BaseUnityPlugin
         Log = Logger;
         Settings = new GoonwoodSettings(Config);
 
-        DeviceManager = new DeviceManager("Goonwood", "ws://127.0.0.1:12345");
+        DeviceManager = new DeviceManager("Goonwood", Settings.IntifaceURL.Value);
         DeviceManager.ConnectDevices();
 
         CommandInitializer.AddCommand(new ButtplugCommand());

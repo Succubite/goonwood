@@ -4,6 +4,6 @@ namespace Goonwood.Settings;
 
 public class GoonwoodSettings(ConfigFile config)
 {
-    public ConfigEntry<bool> MySettingsBool =
-        config.Bind<bool>("SectionName", "MySettingsBool", true, "This is an example boolean setting!");
+    public ConfigEntry<string> IntifaceURL =
+        config.Bind<string>("Buttplug", "IntifaceURL", "ws://127.0.0.1:12345", "The websocket URL for intiface");
 }
