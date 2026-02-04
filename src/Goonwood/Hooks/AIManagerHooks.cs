@@ -23,7 +23,7 @@ internal static class AIManagerHooks
     private static void Postfix_OnUpdate(AIManager self, ref float deltaTime)
     {
         var activeAI = self.GetActiveAI();
-        if (activeAI == null || activeAI.Count == 0) return;
+        if (activeAI?.Count is 0 or null) return;
 
         var sensingEntities = activeAI.Where(entity =>
             entity.HasComponent(AIComponentFlags.Sense) &&
