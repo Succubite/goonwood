@@ -67,14 +67,14 @@ internal static class AIManagerHooks
         LastAlertLevel = highestAlertLevel;
     }
 
-    private static double GetIntensityForAlertLevel(AIAlertLevel level)
+    private static float GetIntensityForAlertLevel(AIAlertLevel level)
     {
         return level switch
         {
-            AIAlertLevel.Low => 0.1,
-            AIAlertLevel.Moderate => 0.3,
-            AIAlertLevel.High => 0.4,
-            _ => 0.0
+            AIAlertLevel.Low => 0.1f,
+            AIAlertLevel.Moderate => 0.3f,
+            AIAlertLevel.High => 0.4f,
+            _ => 0.0f
         };
     }
 }

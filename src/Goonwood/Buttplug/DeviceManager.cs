@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Buttplug.Client;
 using Buttplug.Core;
+using Buttplug.Core.Messages;
 using UnityEngine;
 using ButtplugWebsocketConnector = Buttplug.Client.ButtplugWebsocketConnector;
 
@@ -60,33 +62,43 @@ public class DeviceManager
         await ButtplugClient.DisconnectAsync();
     }
 
-    public void VibrateConnectedDevices(double intensity)
+    public void VibrateConnectedDevices(float intensity)
     {
+        var percentage = Mathf.Clamp(intensity, 0f, 1.0f);
+        
         ConnectedDevices.ForEach(Action);
         return;
 
         async void Action(ButtplugClientDevice device)
         {
-            await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
+            await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(percentage));
         }
     }
 
     public void VibrateConnectedDevicesWithDuration(float intensity, float time)
     {
+        var percentage = Mathf.Clamp(intensity, 0f, 1.0f);
+        
         ConnectedDevices.ForEach(Action);
         return;
 
         async void Action(ButtplugClientDevice device)
         {
-            await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
+            await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(percentage));
             await Task.Delay((int)(time * 1000f));
-            await device.VibrateAsync(0.0f);
+            await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(0f));
         }
     }
 
     public void StopConnectedDevices()
     {
-        ConnectedDevices.ForEach(device => device.Stop());
+        ConnectedDevices.ForEach(Action);
+        return;
+
+        async void Action(ButtplugClientDevice device)
+        {
+            await device.StopAsync();
+        }
     }
 
     public bool IsConnected() => ButtplugClient.Connected;
@@ -116,6 +128,7 @@ public class DeviceManager
 
     private static bool IsVibratableDevice(ButtplugClientDevice device)
     {
-        return device.VibrateAttributes.Count > 0;
+        var vibrateFeatures = device.GetFeaturesWithOutput(OutputType.Vibrate).ToList();
+        return vibrateFeatures.Count > 0;
     }
 }
