@@ -90,12 +90,16 @@ public class DeviceManager
 
     public async void StopConnectedDevices()
     {
+        Goonwood.Log.LogDebug($"Stopping {ConnectedDevices.Count} connected devices");
+
         foreach (var device in ConnectedDevices)
         {
-            await device.StopAsync();
+            
+            // NOTE: StopAsync is currently broken on v5.0.0
+            await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(0f));
         }
     }
-
+    
     public bool IsConnected() => ButtplugClient.Connected;
 
     private void HandleDeviceAdded(object sender, DeviceAddedEventArgs args)
