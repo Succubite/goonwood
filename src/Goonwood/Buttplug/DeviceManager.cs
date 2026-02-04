@@ -63,6 +63,7 @@ public class DeviceManager
     public async void Disconnect()
     {
         StopConnectedDevices();
+        ConnectedDevices.Clear();
         await ButtplugClient.DisconnectAsync();
     }
 
