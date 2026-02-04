@@ -12,7 +12,11 @@ namespace Goonwood.Buttplug;
 
 public class DeviceManager
 {
+    /// <summary>
+    /// A list of connected devices that have a vibrate output
+    /// </summary>
     public List<ButtplugClientDevice> ConnectedDevices { get; set; }
+    
     private ButtplugClient ButtplugClient { get; set; }
     private string ServerUri { get; set; }
 
@@ -62,27 +66,21 @@ public class DeviceManager
         await ButtplugClient.DisconnectAsync();
     }
 
-    public void VibrateConnectedDevices(float intensity)
+    public async void VibrateConnectedDevices(float intensity)
     {
         var percentage = Mathf.Clamp(intensity, 0f, 1.0f);
-        
-        ConnectedDevices.ForEach(Action);
-        return;
 
-        async void Action(ButtplugClientDevice device)
+        foreach (var device in ConnectedDevices)
         {
             await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(percentage));
         }
     }
 
-    public void VibrateConnectedDevicesWithDuration(float intensity, float time)
+    public async void VibrateConnectedDevicesWithDuration(float intensity, float time)
     {
         var percentage = Mathf.Clamp(intensity, 0f, 1.0f);
-        
-        ConnectedDevices.ForEach(Action);
-        return;
 
-        async void Action(ButtplugClientDevice device)
+        foreach (var device in ConnectedDevices)
         {
             await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(percentage));
             await Task.Delay((int)(time * 1000f));
@@ -90,12 +88,9 @@ public class DeviceManager
         }
     }
 
-    public void StopConnectedDevices()
+    public async void StopConnectedDevices()
     {
-        ConnectedDevices.ForEach(Action);
-        return;
-
-        async void Action(ButtplugClientDevice device)
+        foreach (var device in ConnectedDevices)
         {
             await device.StopAsync();
         }
@@ -126,9 +121,5 @@ public class DeviceManager
         ConnectedDevices.Remove(args.Device);
     }
 
-    private static bool IsVibratableDevice(ButtplugClientDevice device)
-    {
-        var vibrateFeatures = device.GetFeaturesWithOutput(OutputType.Vibrate).ToList();
-        return vibrateFeatures.Count > 0;
-    }
+    private static bool IsVibratableDevice(ButtplugClientDevice device) => device.HasOutput(OutputType.Vibrate);
 }
