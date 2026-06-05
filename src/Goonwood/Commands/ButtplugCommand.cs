@@ -19,7 +19,7 @@ public class ButtplugCommand : ICommand
             "connect" => Connect(args[1]),
             "disconnect" => Disconnect(),
             "devices" => ShowDevices(),
-            _ => HelpCommand.Execute(Usage)
+            _ => HelpCommand.Execute(Name),
         };
     }
 

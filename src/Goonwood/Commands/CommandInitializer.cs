@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using Gloomwood;
 using MonoDetour;
-using MonoDetour.Cil;
 using MonoDetour.HookGen;
-using MonoMod.Cil;
 
 namespace Goonwood.Commands;
 

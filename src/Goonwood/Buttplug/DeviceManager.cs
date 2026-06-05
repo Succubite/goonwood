@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Buttplug.Client;
 using Buttplug.Core;
@@ -16,10 +15,9 @@ public class DeviceManager
     /// A list of connected devices that have a vibrate output
     /// </summary>
     public List<ButtplugClientDevice> ConnectedDevices { get; set; }
-    
+
     private ButtplugClient ButtplugClient { get; set; }
     private string ServerUri { get; set; }
-
 
     public DeviceManager(string clientName, string serverUri)
     {
@@ -95,12 +93,12 @@ public class DeviceManager
 
         foreach (var device in ConnectedDevices)
         {
-            
+
             // NOTE: StopAsync is currently broken on v5.0.0
             await device.RunOutputAsync(DeviceOutput.Vibrate.Percent(0f));
         }
     }
-    
+
     public bool IsConnected() => ButtplugClient.Connected;
 
     private void HandleDeviceAdded(object sender, DeviceAddedEventArgs args)

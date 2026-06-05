@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Gloomwood.AI;
 using Gloomwood.Entity.AI;
-using Gloomwood.Logic;
 using MonoDetour;
 using MonoDetour.HookGen;
 
