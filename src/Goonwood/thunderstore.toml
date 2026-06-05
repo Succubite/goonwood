@@ -12,9 +12,9 @@ websiteUrl = "" # TODO: Add a link to your mod repository here (optional)
 containsNsfwContent = false
 
 [package.dependencies]
-BepInEx-BepInExPack = "5.4.2304"
-MonoDetour-MonoDetour_BepInEx_5 = "0.7.12"
-MonoDetour-MonoDetour = "0.7.8"
+BepInEx-BepInExPack = "5.4.2305"
+MonoDetour-MonoDetour_BepInEx_5 = "0.7.13"
+MonoDetour-MonoDetour = "0.7.13"
 
 [build]
 icon = "../../icon.png"
