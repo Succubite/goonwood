@@ -69,9 +69,9 @@ internal static class AIManagerHooks
     {
         return level switch
         {
-            AIAlertLevel.Low => 0.1f,
-            AIAlertLevel.Moderate => 0.3f,
-            AIAlertLevel.High => 0.4f,
+            AIAlertLevel.Low => Goonwood.Settings.LowAlertLevelIntensity.Value,
+            AIAlertLevel.Moderate => Goonwood.Settings.ModerateAlertLevelIntensity.Value,
+            AIAlertLevel.High => Goonwood.Settings.HighAlertLevelIntensity.Value,
             _ => 0.0f
         };
     }
