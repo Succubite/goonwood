@@ -25,10 +25,7 @@ public interface ICommand
     /// <summary>
     /// Creates a new console command structure to add to the available console commands.
     /// </summary>
-    public ConsoleCommand GetCommand()
-    {
-        return new ConsoleCommand(Name, Description, Usage, Execute);
-    }
+    public ConsoleCommand GetCommand() => new(Name, Description, Usage, Execute);
 
     /// <summary>
     /// A function to be executed when the console command is ran.
