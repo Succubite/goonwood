@@ -19,8 +19,8 @@
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" />
     <PackageReference Include="Hamunii.BepInEx.AutoPlugin" Version="2.0.*" PrivateAssets="all" />
 
-    <PackageReference Include="MonoDetour" Version="0.7.8" />
-	<PackageReference Include="MonoDetour.HookGen" Version="0.7.6" />
+    <PackageReference Include="MonoDetour" Version="0.7.13" />
+	<PackageReference Include="MonoDetour.HookGen" Version="0.7.13" />
   </ItemGroup>
 
   <ItemGroup>
