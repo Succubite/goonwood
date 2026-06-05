@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Gloomwood.RuntimeConsole;
+using Gloomwood;
 using MonoDetour;
 using MonoDetour.HookGen;
 
 namespace Goonwood.Commands;
 
-[MonoDetourTargets(typeof(ConsoleController))]
+[MonoDetourTargets(typeof(Console))]
 public static class CommandInitializer
 {
     private static readonly List<ICommand> Commands = [];
@@ -13,7 +13,7 @@ public static class CommandInitializer
     [MonoDetourHookInitialize]
     public static void Initialize()
     {
-        Md.Gloomwood.RuntimeConsole.ConsoleController.Start.Prefix(Prefix_Start);
+        Md.Gloomwood.Console.RegisterCommands.Prefix(Prefix_Start);
     }
 
     public static void AddCommand(ICommand command)
@@ -22,11 +22,11 @@ public static class CommandInitializer
         Commands.Add(command);
     }
 
-    private static void Prefix_Start(ConsoleController self)
+    private static void Prefix_Start()
     {
         foreach (var command in Commands)
         {
-            self.RegisterCommand(command.GetCommand());
+            Console.RegisterCommand(command.GetCommand());
         }
     }
 }
